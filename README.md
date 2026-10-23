@@ -1,32 +1,37 @@
-
 ```markdown
 # 🧪 SE-314: Software Construction — Lab 07
 > **Test-First Programming II: Social Network Analysis**
 
-![Java](https://img.shields.io/badge/Java-17-orange.svg)
-![JUnit](https://img.shields.io/badge/JUnit-4.13-green.svg)
-![Build](https://img.shields.io/badge/Build-Passing-brightgreen.svg)
-![License](https://img.shields.io/badge/MIT-6.005-blue.svg)
+<p align="center">
+  <img src="https://img.shields.io/badge/Java-17-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java" />
+  <img src="https://img.shields.io/badge/JUnit-4.13-25A162?style=for-the-badge&logo=junit5&logoColor=white" alt="JUnit" />
+  <img src="https://img.shields.io/badge/Eclipse_IDE-2026--12-2C2255?style=for-the-badge&logo=eclipseide&logoColor=white" alt="Eclipse" />
+  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git" />
+  <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
+</p>
 
 ---
 
-## 📌 Student & Course Overview
+## 👤 Student & Course Overview
 
-* **👨‍💻 Author:** Muhammad Zun U Rain Tahir
-* **🏫 Institution:** National University of Sciences and Technology (NUST), SEECS
-* **📚 Course:** Software Construction (SE-314) | **Class:** BESE-15AB
-* **👩‍🏫 Instructor:** Dr. Sidra Sultana
-* **👨‍🔧 Lab Engineer:** Mr. Aftab Farooq
-* **📅 Date:** October 23, 2026
+| Attribute | Details |
+| :--- | :--- |
+| **👨‍💻 Author** | **Muhammad Zun U Rain Tahir** |
+| **🏫 Institution** | National University of Sciences and Technology (NUST), SEECS |
+| **📚 Course** | Software Construction (SE-314) |
+| **🎓 Class** | BESE-15AB |
+| **👩‍🏫 Instructor** | Dr. Sidra Sultana |
+| **👨‍🔧 Lab Engineer** | Mr. Aftab Farooq |
+| **📅 Date** | October 23, 2026 |
 
 ---
 
 ## 🎯 Objectives & Learning Outcomes
 
-This lab focuses on implementing **Problem 3 (Social Network Analysis)** from the MIT 6.005 Problem Set 1 specifications using a **Test-First (Red-to-Green)** software engineering methodology.
+This lab implements **Problem 3 (Social Network Analysis)** from the MIT 6.005 Problem Set 1 specifications using a strict **Test-First (Red-to-Green)** software engineering approach.
 
-* **CLO-03:** Design and develop software solutions adhering to core software construction and test-first development principles.
-* **CLO-04:** Utilize modern development tools including **Eclipse IDE**, **JUnit 4 framework**, and **Git/GitHub** version control.
+* 🔹 **CLO-03:** Design and develop software solutions adhering to core software construction principles and test-first development.
+* 🔹 **CLO-04:** Utilize modern software toolchains including **Eclipse IDE**, **JUnit 4 framework**, and **Git/GitHub** version control.
 
 ---
 
@@ -52,7 +57,7 @@ ps1/
 ### 1️⃣ Social Network Graph Inference (`guessFollowsGraph`)
 
 * Scans tweet text for mentions using a lookbehind regex pattern: `(?<![A-Za-z0-9_-])@([A-Za-z0-9_-]+)`.
-* Ignores email formats (e.g., `user@domain.com`) and self-mentions.
+* Ignores email formats (e.g., `bitdiddle@mit.edu`) and self-mentions.
 * Normalizes all usernames to **lowercase** for complete case-insensitivity.
 * Constructs a `Map<String, Set<String>>` representing directed follow edges.
 
@@ -66,7 +71,7 @@ ps1/
 
 ## 🧪 Testing Strategy (Partitioning Approach)
 
-A strict **Red-to-Green Test-Driven Development (TDD)** workflow was implemented in `SocialNetworkTest.java`.
+A strict **Red-to-Green Test-Driven Development (TDD)** workflow was followed in `SocialNetworkTest.java`.
 
 ### 🔍 Domain Partitions Tested:
 
@@ -75,25 +80,27 @@ A strict **Red-to-Green Test-Driven Development (TDD)** workflow was implemented
 * **Author Case Variants:** `lowercase`, `UPPERCASE`, `MixedCase`
 * **Follower Distribution:** `0 followers`, `1 follower`, `many followers`, `tied rank`
 
-### ✅ Test Suite Breakdown:
+### ✅ Test Cases Summary:
 
-1. `testGuessFollowsGraphEmpty` — Verifies empty input returns an empty graph.
-2. `testNoMentions` — Ensures tweets without `@mentions` produce no graph edges.
-3. `testSingleMention` — Tests correct directed edge creation (author $\rightarrow$ mentioned user).
-4. `testMultipleMentions` — Verifies mapping an author to multiple mentioned users.
-5. `testMultipleTweetsOneUser` — Confirms mentions across multiple tweets are aggregated.
-6. `testCaseInsensitiveAuthor` — Validates case normalization across author names.
-7. `testInfluencersEmpty` — Confirms empty graph returns an empty influencer list.
-8. `testSingleUserNoFollowers` — Ensures users without followers are safely handled.
-9. `testSingleInfluencer` — Verifies ranking logic for single-influencer networks.
-10. `testMultipleInfluencersOrder` — Confirms strict descending sort order by follower count.
-11. `testTiedInfluence` — Handles tied follower counts smoothly without throwing exceptions.
+| Test Case Name | Description / Verification |
+| --- | --- |
+| `testGuessFollowsGraphEmpty` | Verifies empty input returns an empty graph. |
+| `testNoMentions` | Ensures tweets without `@mentions` produce no graph edges. |
+| `testSingleMention` | Tests correct directed edge creation (author $\rightarrow$ mentioned user). |
+| `testMultipleMentions` | Verifies mapping an author to multiple mentioned users. |
+| `testMultipleTweetsOneUser` | Confirms mentions across multiple tweets are aggregated. |
+| `testCaseInsensitiveAuthor` | Validates case normalization across author names. |
+| `testInfluencersEmpty` | Confirms empty graph returns an empty influencer list. |
+| `testSingleUserNoFollowers` | Ensures users without followers are safely handled. |
+| `testSingleInfluencer` | Verifies ranking logic for single-influencer networks. |
+| `testMultipleInfluencersOrder` | Confirms strict descending sort order by follower count. |
+| `testTiedInfluence` | Handles tied follower counts smoothly without throwing exceptions. |
 
 ---
 
 ## 🖥 Output & Verification
 
-### 🟢 JUnit 4 Test Suite Results
+### 🟢 JUnit 4 Test Suite Execution
 
 ```text
 -------------------------------------------------------
